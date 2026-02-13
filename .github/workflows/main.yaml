@@ -2,6 +2,9 @@ permissions:
   id-token: write # Ez KÖTELEZŐ az OIDC-hez!
   contents: read
 
+on:
+  workflow_dispatch:
+    
 jobs:
   deploy:
     runs-on: ubuntu-latest
