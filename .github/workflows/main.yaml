@@ -1,0 +1,16 @@
+permissions:
+  id-token: write # Ez KÖTELEZŐ az OIDC-hez!
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::563149050409:role/snapsoft-locust-dev-github-actions-iam-role
+          aws-region: eu-central-1
+          
+      - name: Run Terraform or AWS CLI
+        run: aws sts get-caller-identity
